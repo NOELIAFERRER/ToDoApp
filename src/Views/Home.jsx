@@ -1,6 +1,7 @@
 import React from "react";
 import Task from "../components/Task/Task";
 import { useSelector } from "react-redux";
+import styles from './Home.module.css'
 
 const Home = () => {
   const tasks = useSelector((state) => state.tasks);
@@ -10,7 +11,7 @@ const Home = () => {
   const otherTasks = tasks.filter((el) => el.action !== "llamada" && el.action!=='single');
  
   return (
-    <div> 
+    <div className={styles.container}> 
       <div>
         <h3>Tareas que impliquen un llamado a terceros</h3>
         {!callTasks.length ? (

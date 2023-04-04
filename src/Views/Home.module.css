@@ -1,0 +1,30 @@
+.container {
+    background-color: aquamarine;
+    margin: 2rem;
+    /* padding: 1rem; */
+    width: 80vw;
+    height: 100vh;
+    border-top: 0.3rem double rgb(201, 201, 201);
+    background: #ffffff;
+    box-shadow: 12px 12px 24px #e3e3e3, -12px -12px 24px #e3e3e3;
+}
+
+.container h3 {
+    padding: 0.2rem;   
+    font-family: inherit;
+    font-size: 1rem;
+    /* color:#3e3e3e; */
+    border-radius: 1rem;
+    background-color: rgba(168, 168, 168, 0.288);
+    /* border-bottom: 0.1rem solid #3e3e3e; */
+}
+
+.container p{
+    margin-left: 2rem;
+    color:rgb(106, 106, 106);
+}
+
+/* .container div{
+    margin-top: 1rem;
+
+} */

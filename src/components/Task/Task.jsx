@@ -8,7 +8,8 @@ const Task = ({ task }) => {
   const { title, priority, status, description } = task;
   const dispatch = useDispatch();
 
-  // const handleChange = (e) => {
+  //transformo el título en camelCase:
+  const titleToCamelCase = title[0].toUpperCase().concat(title.slice(1))
 
   const handleClick = (e) => {
     console.log("task", task);
@@ -22,99 +23,99 @@ const Task = ({ task }) => {
   };
 
   return (
+    // <div className={styles.container}>
     <div className={styles.container}>
-      <div className={styles.task}>
-        <span>{title.toUpperCase()}</span>
-        <button onClick={handleOnClick}>Eliminar Tarea</button>
+      <span>{titleToCamelCase}</span>
 
-        <div className={styles.description}>
-          <p> {description}</p>
+      <div className={styles.description}>
+        <p> {description}</p>
+      </div>
+      <div className={styles.info}>
+       
+        <div >
+          {/* <div className={styles.status}> */}
+
+          <span>Prioridad:</span>
+          <span>{priority}</span>
+
+          {/* <span>{priority}</span> */}
+          {/* </div> */}
+
+          <div className={styles.options} id="options">
+            <input
+              type="radio"
+              id="Alta"
+              value="Alta"
+              name="priority"
+              onClick={handleClick}
+              checked={priority !== "null" && priority === "Alta"}
+            />
+            <label htmlFor="Alta">Alta</label>
+            <input
+              type="radio"
+              id="Media"
+              value="Media"
+              name="priority"
+              onClick={handleClick}
+              checked={priority !== "null" && priority === "Media"}
+            />
+            <label for="Media">Media</label>
+            <input
+              type="radio"
+              id="Baja"
+              value="Baja"
+              name="priority"
+              onClick={handleClick}
+              checked={priority !== "null" && priority === "Baja"}
+            />
+            <label for="Baja">Baja</label>
+          </div>
+          {/* <label htmlFor="options" >(Modificar)</label> */}
+      
         </div>
-        <div className={styles.info}>          <div>
-            {/* <div className={styles.status}> */}
-           
-            
-                <span>Prioridad:</span>
-                <span>{priority}</span>
-                
-                  
-              {/* <span>{priority}</span> */}
-            {/* </div> */}
-            
+        <div >
+          {/* <div className={styles.status}> */}
+          <span>Estado:</span>
+          <span>{status}</span>
+          {/* </div> */}
 
-            <div className={styles.options} id='options'>             
-              <input
-                type="radio"
-                id="Alta"
-                value="Alta"
-                name="priority"
-                onClick={handleClick}
-                checked={priority !== "null" && priority === "Alta"}
-              />
-              <label htmlFor="Alta">Alta</label>
-              <input
-                type="radio"
-                id="Media"
-                value="Media"
-                name="priority"
-                onClick={handleClick}
-                checked={priority !== "null" && priority === "Media"}
-              />
-              <label for="Media">Media</label>
-              <input
-                type="radio"
-                id="Baja"
-                value="Baja"
-                name="priority"
-                onClick={handleClick}
-                checked={priority !== "null" && priority === "Baja"}
-              />
-              <label for="Baja">Baja</label>
-            </div>
-            <label htmlFor="options">(Modificar)</label>
-            {/* <p>Modificar</p> */}
+          <div className={styles.options} id="options">
+            <input
+              type="radio"
+              id="nueva"
+              value="Nueva"
+              name="status"
+              onClick={handleClick}
+              checked={status !== null && status === "Nueva"}
+            />
+            <label htmlFor="nueva">Nueva</label>
+            <input
+              type="radio"
+              id="en proceso"
+              value="En proceso"
+              name="status"
+              onClick={handleClick}
+              checked={status !== null && status === "En proceso"}
+            />
+            <label htmlFor="en proceso">En proceso</label>
+            <input
+              type="radio"
+              id="finalizada"
+              value="Finalizada"
+              name="status"
+              onClick={handleClick}
+              checked={status !== null && status === "Finalizada"}
+            />
+            <label htmlFor="finalizada">Finalizada</label>
           </div>
-
-          <div>
-            {/* <div className={styles.status}> */}
-              <span>Estado:</span>
-              <span>{status}</span>
-            {/* </div> */}
-
-            <div className={styles.options} id='options'>           
-              <input
-                type="radio"
-                id="nueva"
-                value="Nueva"
-                name="status"
-                onClick={handleClick}
-                checked={status !== null && status === "Nueva"}
-              />
-              <label htmlFor="nueva">Nueva</label>
-              <input
-                type="radio"
-                id="en proceso"
-                value="En proceso"
-                name="status"
-                onClick={handleClick}
-                checked={status !== null && status === "En proceso"}
-              />
-              <label htmlFor="en proceso">En proceso</label>
-              <input
-                type="radio"
-                id="finalizada"
-                value="Finalizada"
-                name="status"
-                onClick={handleClick}
-                checked={status !== null && status === "Finalizada"}
-              />
-              <label htmlFor="finalizada">Finalizada</label>
-            </div>
-            <label htmlFor="options">(Modificar)</label>
-          </div>
+          {/* <label htmlFor="options">(Modificar)</label> */}
+        </div>
+        <div>
+          <button onClick={handleOnClick}>Eliminar Tarea</button>
         </div>
       </div>
     </div>
+    // </div>
   );
 };
 

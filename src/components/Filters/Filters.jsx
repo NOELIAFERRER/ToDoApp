@@ -1,22 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { filterTasks } from "../../redux/actions";
+import styles from './Filters.module.css'
 
 const Filters = () => {
-
   const dispatch = useDispatch();
 
-
-  const handleChange = (e) => {   
+  const handleChange = (e) => {
     dispatch(filterTasks(e.target.value));
-    return () =>{
-    dispatch(filterTasks('All'))
-    }
+    return () => {
+      dispatch(filterTasks("All"));
+    };
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <h2>Filtrar</h2>
+      <div>
       <label htmlFor="Priority">Prioridad</label>
       <select name="Pioridad" id="pri" onChange={(e) => handleChange(e)}>
         <option name="All" value="All">
@@ -32,7 +32,8 @@ const Filters = () => {
           Baja
         </option>
       </select>
-
+      </div>
+      <div>
       <label htmlFor="Estado">Estado</label>
       <select name="Estado" id="est" onChange={(e) => handleChange(e)}>
         <option name="All" value="All">
@@ -48,6 +49,7 @@ const Filters = () => {
           Finalizada
         </option>
       </select>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,28 @@
+.container {
+  width: 70vw;
+  height: 6vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: 0.1rem solid rgb(218, 217, 217);
+  border-radius: 3rem;
+  background: #3e3e3e;
+  box-shadow: 0.5rem 0.5rem 1rem #313131, -0.5rem -0.5rem 1rem #313131;
+  color: white;
+}
+
+.container div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.container label {
+  font-size: 0.8rem;
+}
+
+.container select {
+  background: none;
+  border-radius: 2rem;
+  color: rgb(106, 106, 106);
+}
