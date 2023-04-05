@@ -29,6 +29,7 @@
 @media screen and  (max-width: 720px) {
     .container{
       width: 100vw;
+      padding-top: 1rem;
     }
   }
 
