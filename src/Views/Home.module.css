@@ -13,6 +13,8 @@
     padding: 0.2rem;   
     font-family: inherit;
     font-size: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
     /* color:#3e3e3e; */
     border-radius: 1rem;
     background-color: rgba(168, 168, 168, 0.288);
@@ -23,6 +25,12 @@
     margin-left: 2rem;
     color:rgb(106, 106, 106);
 }
+
+@media screen and  (max-width: 720px) {
+    .container{
+      width: 100vw;
+    }
+  }
 
 /* .container div{
     margin-top: 1rem;

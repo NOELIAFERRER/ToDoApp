@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Dialog, DialogTitle, DialogContent } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { getTasks } from "../../redux/actions";
-import styles from './CreateTask.module.css';
+import styles from "./CreateTask.module.css";
 
 const CreateTask = () => {
   const [open, setOpen] = useState(false);
@@ -41,7 +41,7 @@ const CreateTask = () => {
   return (
     <div className={styles.container}>
       <button onClick={handleClick}>+</button>
-      
+
       <Dialog
         open={open}
         keepMounted
@@ -50,11 +50,11 @@ const CreateTask = () => {
       >
         <DialogContent>
           <DialogTitle sx={{ width: "100%", fontSize: 18 }}>
-            Especificar la tarea para agregar
+            Tarea a agregar
           </DialogTitle>
 
           <form onSubmit={handleSubmit}>
-            <p>
+            <div className={styles.title}>
               <label htmlFor="title">Título</label>
               <input
                 type="text"
@@ -62,65 +62,78 @@ const CreateTask = () => {
                 name="title"
                 value={input.title}
               />
-            </p>
-
-            <p>Prioridad</p>
-
-            <div>
-              <label htmlFor="Alta">Alta</label>
-              <input
-                type="radio"
-                id="Alta"
-                value="Alta"
-                name="priority"
-                onClick={(e) => handleChange(e)}
-              />
-              <label for="Media">Media</label>
-              <input
-                type="radio"
-                id="Media"
-                value="Media"
-                name="priority"
-                onClick={(e) => handleChange(e)}
-              />
-              <label for="Baja">Baja</label>
-              <input
-                type="radio"
-                id="Baja"
-                value="Baja"
-                name="priority"
-                onClick={(e) => handleChange(e)}
-              />
             </div>
-            <p>Estado: </p>
-            <div>
-              <input
-                type="radio"
-                id="nueva"
-                value="Nueva"
-                name="status"
-                onClick={(e) => handleChange(e)}
-              />
-              <label htmlFor="nueva">Nueva</label>
-              <input
-                type="radio"
-                id="en proceso"
-                value="En proceso"
-                name="status"
-                onClick={(e) => handleChange(e)}
-              />
-              <label htmlFor="en proceso">En proceso</label>
-              <input
-                type="radio"
-                id="finalizada"
-                value="Finalizada"
-                name="status"
-                onClick={(e) => handleChange(e)}
-              />
-              <label htmlFor="finalizada">Finalizada</label>
+            <div className={styles.options}>
+              <div className={styles.optionsTitle}>
+                <span>Prioridad</span>
+                <span style={{ color: "grey" }}>
+                  {input.priority}
+                </span>
+              </div>
+              <div className={styles.optionsGroup}>
+                <label htmlFor="Alta">Alta</label>
+                <input
+                  type="radio"
+                  id="Alta"
+                  value="Alta"
+                  name="priority"
+                  onClick={(e) => handleChange(e)}
+                />
+                <label for="Media">Media</label>
+                <input
+                  type="radio"
+                  id="Media"
+                  value="Media"
+                  name="priority"
+                  onClick={(e) => handleChange(e)}
+                />
+                <label for="Baja">Baja</label>
+                <input
+                  type="radio"
+                  id="Baja"
+                  value="Baja"
+                  name="priority"
+                  onClick={(e) => handleChange(e)}
+                />
+              </div>
+            </div>
+            <div className={styles.options}>
+              <div className={styles.optionsTitle}>
+                <span>Estado</span>
+                <span style={{ color: "grey" }}>
+                  {input.status}
+                </span>
+              </div>
+
+              <div className={styles.optionsGroup}>
+                <label htmlFor="nueva">Nueva</label>
+                <input
+                  type="radio"
+                  id="nueva"
+                  value="Nueva"
+                  name="status"
+                  onClick={(e) => handleChange(e)}
+                />
+                  <label htmlFor="en proceso">En proceso</label>
+                <input
+                  type="radio"
+                  id="en proceso"
+                  value="En proceso"
+                  name="status"
+                  onClick={(e) => handleChange(e)}
+                />
+                  <label htmlFor="finalizada">Finalizada</label>
+                <input
+                  type="radio"
+                  id="finalizada"
+                  value="Finalizada"
+                  name="status"
+                  onClick={(e) => handleChange(e)}
+                />
+              </div>
             </div>
 
-            <div>
+            <div className= {styles.action}>
               <select
                 name="action"
                 id="action"
@@ -142,17 +155,17 @@ const CreateTask = () => {
               </select>
             </div>
 
-            <p>
+            <div className={styles.description}>
               <label htmlFor="description">Descripción</label>
               <textarea
                 name="description"
                 id="des"
                 cols="30"
-                rows="10"
+                rows="5"
                 onChange={(e) => handleChange(e)}
                 value={input.description}
               ></textarea>
-            </p>
+            </div>
 
             <button type="submit">Agregar</button>
           </form>

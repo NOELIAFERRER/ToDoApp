@@ -3,7 +3,7 @@ import { DELETE_TASK, FILTER_TASKS, GET_TASKS, UPDATE_TASK } from "./actions";
 const initialState = {
   tasks: [],
   allTasks: [],
-  localStorage: []
+  localStorage: [], 
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -51,7 +51,8 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             tasks: taskRemaining,
             allTasks: taskRemaining
-          }        
+          }  
+  
     default:
       return { ...state };
   }

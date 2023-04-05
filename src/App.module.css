@@ -10,3 +10,9 @@
   background: #cdcdcd;
   /* box-shadow: 12px 12px 24px #e3e3e3, -12px -12px 24px #e3e3e3; */
 }
+
+@media screen and  (max-width: 720px) {
+  .container{
+    padding: 0;
+  }
+}

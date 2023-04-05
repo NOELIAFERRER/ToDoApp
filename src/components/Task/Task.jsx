@@ -1,20 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Task.module.css";
 import { useDispatch } from "react-redux";
 
 import { deleteTask, updateTask } from "../../redux/actions";
+import Options from "../Options/Options";
 
 const Task = ({ task }) => {
   const { title, priority, status, description } = task;
   const dispatch = useDispatch();
 
   //transformo el título en camelCase:
-  const titleToCamelCase = title[0].toUpperCase().concat(title.slice(1))
+  const titleToCamelCase = title[0].toUpperCase().concat(title.slice(1));
 
   const handleClick = (e) => {
-    console.log("task", task);
-    task[e.target.name] = e.target.value;
-    dispatch(updateTask(task));
+    // setOpen(true)
+    // dispatch(handleDialog(true))
+    // console.log("task", task);
+    // task[e.target.name] = e.target.value;
+    // dispatch(updateTask(task));
   };
 
   const handleOnClick = () => {
@@ -23,99 +26,35 @@ const Task = ({ task }) => {
   };
 
   return (
-    // <div className={styles.container}>
     <div className={styles.container}>
       <span>{titleToCamelCase}</span>
 
-      <div className={styles.description}>
-        <p> {description}</p>
-      </div>
+      <p>{description}</p>
       <div className={styles.info}>
-       
-        <div >
+        <div>
           {/* <div className={styles.status}> */}
 
-          <span>Prioridad:</span>
+          <span style={{ fontSize: "0.8rem", color: "#757575" }}>
+            Prioridad:
+          </span>
           <span>{priority}</span>
 
-          {/* <span>{priority}</span> */}
-          {/* </div> */}
-
-          <div className={styles.options} id="options">
-            <input
-              type="radio"
-              id="Alta"
-              value="Alta"
-              name="priority"
-              onClick={handleClick}
-              checked={priority !== "null" && priority === "Alta"}
-            />
-            <label htmlFor="Alta">Alta</label>
-            <input
-              type="radio"
-              id="Media"
-              value="Media"
-              name="priority"
-              onClick={handleClick}
-              checked={priority !== "null" && priority === "Media"}
-            />
-            <label for="Media">Media</label>
-            <input
-              type="radio"
-              id="Baja"
-              value="Baja"
-              name="priority"
-              onClick={handleClick}
-              checked={priority !== "null" && priority === "Baja"}
-            />
-            <label for="Baja">Baja</label>
-          </div>
-          {/* <label htmlFor="options" >(Modificar)</label> */}
-      
+          <Options task={task} pri={true} sta={false} />
         </div>
-        <div >
+        <div>
           {/* <div className={styles.status}> */}
-          <span>Estado:</span>
+          <span style={{ fontSize: "0.8rem", color: "#757575" }}>Estado:</span>
           <span>{status}</span>
           {/* </div> */}
 
-          <div className={styles.options} id="options">
-            <input
-              type="radio"
-              id="nueva"
-              value="Nueva"
-              name="status"
-              onClick={handleClick}
-              checked={status !== null && status === "Nueva"}
-            />
-            <label htmlFor="nueva">Nueva</label>
-            <input
-              type="radio"
-              id="en proceso"
-              value="En proceso"
-              name="status"
-              onClick={handleClick}
-              checked={status !== null && status === "En proceso"}
-            />
-            <label htmlFor="en proceso">En proceso</label>
-            <input
-              type="radio"
-              id="finalizada"
-              value="Finalizada"
-              name="status"
-              onClick={handleClick}
-              checked={status !== null && status === "Finalizada"}
-            />
-            <label htmlFor="finalizada">Finalizada</label>
-          </div>
-          {/* <label htmlFor="options">(Modificar)</label> */}
+          <Options task={task} pri={false} sta={true} />
         </div>
-        <div>
-          <button onClick={handleOnClick}>Eliminar Tarea</button>
-        </div>
+
+        <button className={styles.btn} onClick={handleOnClick}>
+          Eliminar
+        </button>
       </div>
     </div>
-    // </div>
   );
 };
 

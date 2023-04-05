@@ -6,8 +6,100 @@
     border: none;
     position: fixed;
     bottom: 4rem;
-    right: 10rem;
+    right: 4rem;
     border-radius: 50%;
     width: 4rem;
     height: 4rem;
+}
+
+/* form{
+    font-size: 0.9rem;
+} */
+
+.title input {
+    margin: 0.2rem;
+    padding: 0.2rem;
+    width: 35vw;
+    height: 1.5rem;
+    background-color: #e9e9e9;
+    border: none;
+    border-radius: 1em;
+    /* border: 0.1rem solid rgb(170, 170, 170); */
+    font-style:normal;
+}
+
+.options {
+    margin: 0.6rem;
+    padding: 0.6rem;
+    width: 40vw;
+    /* height: 1.5rem; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    /* border: 0.1rem solid black; */
+    background-color: #e9e9e9;
+    border: none;
+    border-radius: 1em;
+}
+.optionsTitle {
+    width: 16vw;
+    /* padding-top: 0.5rem; */
+    display:flex;
+    
+    align-items: baseline;
+    justify-content:space-between;
+
+}
+.optionsGroup {
+    border: 0.1rem solid white;  
+    border-radius: 1em;
+    display: flex;
+    flex-direction: row;  
+    justify-content: center;
+    width: 34vw;
+    margin: 0.3rem;
+    padding: 0.3rem;
+}
+.action select {
+    margin: 0.6rem;
+    padding: 0.6rem;
+    width: 40vw;
+    /* height: 1.5rem; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    /* border: 0.1rem solid black; */
+    background-color: #e9e9e9;
+    border: none;
+    border-radius: 1em;
+
+}
+.description {
+    display:flex;
+    flex-direction: column;
+    border-radius: 1em;
+}
+
+.description textarea{
+    border: 0.1rem solid #e9e9e9;
+    border-radius: 1em;   
+    }
+
+
+@media screen and (max-width: 720px){
+
+    .tittle input{
+        width: 80vw;
+    }
+
+    .container button {
+        bottom: 2rem;
+        right: 2rem;
+        border-radius: 50%;
+        width: 4rem;
+        height: 4rem;
+    }
+    
 }
