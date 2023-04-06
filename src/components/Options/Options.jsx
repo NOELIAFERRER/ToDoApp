@@ -11,8 +11,6 @@ const Options = ({ task, pri, sta }) => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
 
-  console.log("pri:", pri);
-
   const handleClick = (e) => {
     console.log("task", task);
     task[e.target.name] = e.target.value;
@@ -64,7 +62,7 @@ const Options = ({ task, pri, sta }) => {
                   onClick={handleClick}
                   checked={priority !== "null" && priority === "Media"}
                 />
-                <label for="Media">Media</label>
+                <label htmlFor="Media">Media</label>
                 <input
                   type="radio"
                   id="Baja"
@@ -73,7 +71,7 @@ const Options = ({ task, pri, sta }) => {
                   onClick={handleClick}
                   checked={priority !== "null" && priority === "Baja"}
                 />
-                <label for="Baja">Baja</label>
+                <label htmlFor="Baja">Baja</label>
                 <button onClick={handleOnClose}>OK</button>
               </div>
             )}

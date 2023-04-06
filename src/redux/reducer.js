@@ -1,4 +1,4 @@
-import { DELETE_TASK, FILTER_TASKS, GET_TASKS, UPDATE_TASK } from "./actions";
+import { DELETE_TASK, FILTER_TASKS, GET_TASKS, SET_TASKS, UPDATE_TASK } from "./actions";
 
 const initialState = {
   tasks: [],
@@ -8,19 +8,23 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_TASKS:
-      
-      const taskList = [...state.tasks, action.payload]      
+    case GET_TASKS:      
+      // const taskList = [...state.tasks, action.payload]      
       return {
         ...state,
         tasks: [...state.tasks, action.payload],
         allTasks: [...state.tasks, action.payload],
 
         //preparo para trabajar con la memoria
-        localStorage: window.localStorage.setItem(taskList, JSON.stringify(taskList))        
+        // localStorage: window.localStorage.setItem(taskList, JSON.stringify(taskList))        
         // localStorage: window.localStorage.setItem([...state.tasks, action.payload], JSON.stringify([...state.tasks, action.payload]) )
-      
+     
       };
+
+     case SET_TASKS:
+      return{
+        ...state
+      } ;
     case UPDATE_TASK:
       const tasksCopy = [...state.allTasks];      
       const taskToUpdateIndex = tasksCopy.findIndex(el => `${el.title}` === `${action.payload.title}`)

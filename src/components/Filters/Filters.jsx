@@ -15,7 +15,7 @@ const Filters = () => {
 
   return (
     <div className={styles.container}>
-      <h2>Filtrar</h2>
+      <p style={{fontSize: '120%'}}>Filtrar</p>
       <div>
       <label htmlFor="Priority">Prioridad</label>
       <select name="Pioridad" id="pri" onChange={(e) => handleChange(e)}>

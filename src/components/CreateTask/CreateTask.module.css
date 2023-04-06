@@ -14,12 +14,13 @@
 
 /* form{
     font-size: 0.9rem;
+    width: 70vw;
 } */
 
 .title input {
     margin: 0.2rem;
     padding: 0.2rem;
-    width: 35vw;
+    width: 20vw;
     height: 1.5rem;
     background-color: #e9e9e9;
     border: none;
@@ -31,7 +32,7 @@
 .options {
     margin: 0.6rem;
     padding: 0.6rem;
-    width: 40vw;
+    width: 24vw;
     /* height: 1.5rem; */
     display: flex;
     flex-direction: column;
@@ -48,7 +49,7 @@
     display:flex;
     
     align-items: baseline;
-    justify-content:space-between;
+    justify-content:space-evenly;
 
 }
 .optionsGroup {
@@ -57,14 +58,14 @@
     display: flex;
     flex-direction: row;  
     justify-content: center;
-    width: 34vw;
+    width: 20vw;
     margin: 0.3rem;
     padding: 0.3rem;
 }
 .action select {
     margin: 0.6rem;
     padding: 0.6rem;
-    width: 40vw;
+    width: 20vw;
     /* height: 1.5rem; */
     display: flex;
     flex-direction: column;
@@ -90,7 +91,7 @@
 @media screen and (max-width: 720px){
 
     .tittle input{
-        width: 80vw;
+        width: 50vw;
     }
 
     .container button {
@@ -100,5 +101,26 @@
         width: 4rem;
         height: 4rem;
     }
+
+    .options {
+        width: 65vw;
+    }
+
+    .optionsTitle {
+        width: 60vw;
+    }
+
+    .title input {
+        width: 60vw;
+    }
     
+    .optionsGroup {
+        width: 60vw;
+        font-size: 0.8rem;
+    }
+
+    .action select {
+        width: 50vw;
+        font-size: 0.8rem;
+    }
 }

@@ -1,4 +1,5 @@
 export const GET_TASKS = 'GET_TASKS';
+export const SET_TASKS = 'SET_TASKS';
 export const UPDATE_TASK = 'UPDATE_TASK';
 export const FILTER_TASKS = 'FILTER_TASKS';
 export const DELETE_TASK = 'DELETE_TASK';
@@ -9,6 +10,14 @@ export const getTasks = (payload) => {
         dispatch({
             type: GET_TASKS,
             payload,
+        })
+    }
+}
+
+export const setTasks = () => {
+    return(dispatch) => {
+        dispatch({
+            type: SET_TASKS
         })
     }
 }

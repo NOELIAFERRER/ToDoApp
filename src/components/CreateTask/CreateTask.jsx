@@ -12,6 +12,7 @@ const CreateTask = () => {
     priority: "",
     status: "",
     description: "",
+    action: ""
   });
   const dispatch = useDispatch();
 
