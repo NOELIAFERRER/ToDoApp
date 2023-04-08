@@ -4,11 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from './Home.module.css'
 import Pagination from "../components/Pagination/Pagination";
 import { setTasks } from "../redux/actions";
+import Filters from "../components/Filters/Filters";
 
 const Home = () => {
   const tasks = useSelector((state) => state.tasks);
+  const allTasks = useSelector((state) => state.allTasks)
   const dispatch = useDispatch();
   console.log("tasks", tasks);
+  console.log('allTasks', allTasks);
   
   //preparo para la paginación
   const [page, setPage] = useState(1);
@@ -17,25 +20,24 @@ const Home = () => {
   const indexFirstTask = indexLastTask - tasksPerPage;
   //fragmento el total de tareas a mostrar por página
   const currentTasks = tasks.slice(indexFirstTask, indexLastTask);
-  console.log('indexFirstTask', indexFirstTask)
-  console.log('indexLastTask', indexLastTask)
-  console.log('currentTask', currentTasks)
+
   //asigno el total de tareas según acción
-  const callTasks = currentTasks.filter((el) => el.action === "llamada");
-  const singleTasks = currentTasks.filter((el) => el.action === "single");
-  const otherTasks = currentTasks.filter((el) => el.action !== "llamada" && el.action!=='single');
+  const callTasks = currentTasks?.filter((el) => el.action === "llamada");
+  const singleTasks = currentTasks?.filter((el) => el.action === "single");
+  const otherTasks = currentTasks?.filter((el) => el.action !== "llamada" && el.action!=='single');
  
 
   const paging = (number) => {
     setPage(number);
   };  
 
-  useEffect(() => {
-    dispatch(setTasks())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(setTasks())
+  // }, [dispatch])
 
   return (
     <div className={styles.container}> 
+    <Filters setPage={setPage}/>
       <div>
         <h3>Tareas que impliquen un llamado a terceros</h3>
         {!callTasks.length ? (

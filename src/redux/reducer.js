@@ -9,7 +9,7 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_TASKS:      
-      // const taskList = [...state.tasks, action.payload]      
+      if( action.payload.status === '')  action.payload.status = 'Nueva'     
       return {
         ...state,
         tasks: [...state.tasks, action.payload],
@@ -23,7 +23,8 @@ const rootReducer = (state = initialState, action) => {
 
      case SET_TASKS:
       return{
-        ...state
+        ...state, 
+        tasks: state.allTasks          
       } ;
     case UPDATE_TASK:
       const tasksCopy = [...state.allTasks];      
@@ -49,14 +50,13 @@ const rootReducer = (state = initialState, action) => {
           tasks: filteredTasks
         }
         case DELETE_TASK:
-          const tasksCopy2 = [...state.tasks];
+          const tasksCopy2 = [...state.allTasks];
           const taskRemaining = tasksCopy2.filter((el) => el.title !== action.payload.title)
           return{
             ...state,
             tasks: taskRemaining,
             allTasks: taskRemaining
-          }  
-  
+          }    
     default:
       return { ...state };
   }

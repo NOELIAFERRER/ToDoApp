@@ -88,6 +88,10 @@
     border-radius: 1em;   
     }
 
+.error {
+    color: red;
+}
+
 @media screen and (max-width: 720px){
 
     .tittle input{

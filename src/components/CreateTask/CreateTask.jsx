@@ -1,26 +1,33 @@
 import React, { useState } from "react";
 //material ui
 import { Dialog, DialogTitle, DialogContent } from "@mui/material";
-import { useDispatch } from "react-redux";
-import { getTasks } from "../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { getTasks, setTasks } from "../../redux/actions";
 import styles from "./CreateTask.module.css";
 
 const CreateTask = () => {
+  const tasks = useSelector((state) => state.tasks);
+  const allTasks = useSelector((state) => state.allTasks);
+  const dispatch = useDispatch();
+  
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState({
     title: "",
     priority: "",
     status: "",
     description: "",
-    action: ""
+    action: "",
   });
-  const dispatch = useDispatch();
+  const [error, setError] = useState({});
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(getTasks(input));
-    setOpen(false);
-  };
+  const validateInput = (input) => {
+    let errorInput = {}
+    if(input.title === '') errorInput.title= 'Se debe ingresar una tarea';
+   if(input.priority === '') errorInput.priority= 'Se debe seleccionar una prioridad';
+   if(input.status === '' ) errorInput.status = 'Si no se selecciona una opción, por defecto será "Nueva"' 
+   if(input.action === '' ) input.action = 'otras' 
+   return errorInput
+  }
 
   const handleClick = (e) => {
     setOpen(true);
@@ -37,8 +44,28 @@ const CreateTask = () => {
     setInput({
       ...input,
       [e.target.name]: e.target.value,
+    })    
+    setError(validateInput(input))
+  };
+
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if(tasks.length !== allTasks.length){    
+      dispatch(setTasks());
+    }
+    dispatch(getTasks(input));
+    setOpen(false);
+    setInput({
+      title: "",
+      priority: "",
+      status: "",
+      description: "",
+      action: "",
     });
   };
+
   return (
     <div className={styles.container}>
       <button onClick={handleClick}>+</button>
@@ -62,14 +89,14 @@ const CreateTask = () => {
                 onChange={(e) => handleChange(e)}
                 name="title"
                 value={input.title}
-              />
+              />   
+               {error.title && <p className={styles.error}>{error.title}</p> }         
             </div>
+           
             <div className={styles.options}>
               <div className={styles.optionsTitle}>
                 <span>Prioridad</span>
-                <span style={{ color: "grey" }}>
-                  {input.priority}
-                </span>
+                <span style={{ color: "grey" }}>{input.priority}</span>
               </div>
               <div className={styles.optionsGroup}>
                 <label htmlFor="Alta">Alta</label>
@@ -80,30 +107,29 @@ const CreateTask = () => {
                   name="priority"
                   onClick={(e) => handleChange(e)}
                 />
-                <label for="Media">Media</label>
+                <label htmlFor="Media">Media</label>
                 <input
                   type="radio"
                   id="Media"
                   value="Media"
                   name="priority"
                   onClick={(e) => handleChange(e)}
-                />
-                <label for="Baja">Baja</label>
+                  />
+                <label htmlFor="Baja">Baja</label>
                 <input
                   type="radio"
                   id="Baja"
                   value="Baja"
                   name="priority"
                   onClick={(e) => handleChange(e)}
-                />
+                  />
               </div>
+                  {error.priority && <p className={styles.error}>{error.priority}</p>}
             </div>
             <div className={styles.options}>
               <div className={styles.optionsTitle}>
                 <span>Estado</span>
-                <span style={{ color: "grey" }}>
-                  {input.status}
-                </span>
+                <span style={{ color: "grey" }}>{input.status}</span>
               </div>
 
               <div className={styles.optionsGroup}>
@@ -115,7 +141,7 @@ const CreateTask = () => {
                   name="status"
                   onClick={(e) => handleChange(e)}
                 />
-                  <label htmlFor="en proceso">En proceso</label>
+                <label htmlFor="en proceso">En proceso</label>
                 <input
                   type="radio"
                   id="en proceso"
@@ -123,7 +149,7 @@ const CreateTask = () => {
                   name="status"
                   onClick={(e) => handleChange(e)}
                 />
-                  <label htmlFor="finalizada">Finalizada</label>
+                <label htmlFor="finalizada">Finalizada</label>
                 <input
                   type="radio"
                   id="finalizada"
@@ -132,9 +158,11 @@ const CreateTask = () => {
                   onClick={(e) => handleChange(e)}
                 />
               </div>
+              {error.status && <p className={styles.error}>{error.status}</p> }         
+
             </div>
 
-            <div className= {styles.action}>
+            <div className={styles.action}>
               <select
                 name="action"
                 id="action"
@@ -168,7 +196,7 @@ const CreateTask = () => {
               ></textarea>
             </div>
 
-            <button type="submit">Agregar</button>
+            <button type="submit" disable={error}>Agregar</button>
           </form>
         </DialogContent>
       </Dialog>

@@ -3,16 +3,14 @@ import { useDispatch } from "react-redux";
 import { filterTasks } from "../../redux/actions";
 import styles from './Filters.module.css'
 
-const Filters = () => {
-  const dispatch = useDispatch();
+const Filters = ({setPage}) => {
 
+    const dispatch = useDispatch();
   const handleChange = (e) => {
     dispatch(filterTasks(e.target.value));
-    return () => {
-      dispatch(filterTasks("All"));
-    };
+    setPage(1)
   };
-
+  
   return (
     <div className={styles.container}>
       <p style={{fontSize: '120%'}}>Filtrar</p>
