@@ -38,6 +38,7 @@ const Home = () => {
   return (
     <div className={styles.container}> 
     <Filters setPage={setPage}/>
+    <div className={styles.tasks}>
       <div>
         <h3>Tareas que impliquen un llamado a terceros</h3>
         {!callTasks.length ? (
@@ -73,6 +74,7 @@ const Home = () => {
             </div>
           ))
         )}
+      </div>
       </div>
       <Pagination tasks={tasks.length} tasksPerPage={tasksPerPage} paging={paging} page={page}/>
     </div>

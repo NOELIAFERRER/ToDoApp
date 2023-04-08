@@ -10,6 +10,7 @@ const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_TASKS:      
       if( action.payload.status === '')  action.payload.status = 'Nueva'     
+      if(action.payload.action === '') action.payload.action = 'otras'
       return {
         ...state,
         tasks: [...state.tasks, action.payload],

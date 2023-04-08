@@ -27,7 +27,8 @@ const Task = ({ task }) => {
 
   return (
     <div className={styles.container}>
-      <span>{titleToCamelCase}</span>
+      <span 
+      className={status === 'Finalizada' ? styles.finalizada : priority === 'Alta' ? styles.alta : priority === 'Media' ? styles.media : styles.baja}>{titleToCamelCase}</span>
 
       <p>{description}</p>
       <div className={styles.info}>
@@ -37,7 +38,7 @@ const Task = ({ task }) => {
           <span style={{ fontSize: "0.8rem", color: "#757575" }}>
             Prioridad:
           </span>
-          <span>{priority}</span>
+          <span>{priority} </span>
 
           <Options task={task} pri={true} sta={false} />
         </div>

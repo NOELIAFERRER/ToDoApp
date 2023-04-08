@@ -48,8 +48,6 @@ const CreateTask = () => {
     setError(validateInput(input))
   };
 
-
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if(tasks.length !== allTasks.length){    
@@ -195,8 +193,7 @@ const CreateTask = () => {
                 value={input.description}
               ></textarea>
             </div>
-
-            <button type="submit" disable={error}>Agregar</button>
+            <button type="submit" disabled={error.title || error.priority}>Agregar</button>
           </form>
         </DialogContent>
       </Dialog>
