@@ -1,8 +1,8 @@
 button {   
     width: 8vw;
     height: 3vh;
+    min-height: 1.3rem;
     margin: 0.5rem;
-    /* align-self: flex-end; */
     border: 0.1rem solid rgb(218, 217, 217);
     border-radius: 1rem;
     background: #5c5c5c;
@@ -23,6 +23,8 @@ button {
     button {
       width: 15vw;
       margin-left: 1rem;
+      right: 1.5rem;
+      bottom: 1.5rem;
     }
   }
 

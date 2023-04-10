@@ -40,7 +40,7 @@ const Home = () => {
     <Filters setPage={setPage}/>
     <div className={styles.tasks}>
       <div>
-        <h3>Tareas que impliquen un llamado a terceros</h3>
+        <h4>Tareas que impliquen un llamado a terceros</h4>
         {!callTasks.length ? (
           <p>No tienes llamados para realizar</p>
         ) : (
@@ -52,7 +52,7 @@ const Home = () => {
         )}
       </div>
       <div>
-        <h3>Tareas sencillas</h3>
+        <h4>Tareas sencillas</h4>
         {!singleTasks.length ? (
           <p>No tienes tareas sencillas para realizar</p>
         ) : (
@@ -64,7 +64,7 @@ const Home = () => {
         )}
       </div>
       <div>
-        <h3>Otras tareas</h3>
+        <h4>Otras tareas</h4>
         {!otherTasks.length ? (
           <p>Relaja, no hay tareas complejas!!</p>
         ) : (

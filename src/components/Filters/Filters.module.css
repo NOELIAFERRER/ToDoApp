@@ -1,7 +1,9 @@
 .container {
-margin-top: 1rem;
-  width: 70vw;
+  margin: 1.5rem 1rem 1rem 1rem;
+  align-self: center;
+  width: 75vw;
   height: 6vh;
+  min-height: 3rem;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -12,17 +14,20 @@ margin-top: 1rem;
   color: white;
 }
 
-.container div {
+.container div {  
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
-.container label {
+/* .container label { */
+label {
+
   font-size: 80%;
 }
 
-.container select {
+/* .container select { */
+select {
   background: none;
   border-radius: 2rem;
   color: rgb(106, 106, 106);
