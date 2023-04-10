@@ -1,26 +1,20 @@
-import React, { useState } from "react";
-import styles from "./Task.module.css";
-import { useDispatch } from "react-redux";
-
-import { deleteTask, updateTask } from "../../redux/actions";
+import React from "react";
+//components
 import Options from "../Options/Options";
+//redux
+import { useDispatch } from "react-redux";
+import { deleteTask } from "../../redux/actions";
+//styles
+import styles from "./Task.module.css";
 
 const Task = ({ task }) => {
   const { title, priority, status, description } = task;
   const dispatch = useDispatch();
 
   //transformo el título en camelCase:
-  const titleToCamelCase = title[0].toUpperCase().concat(title.slice(1));
+  const titleToCamelCase = title && title[0].toUpperCase().concat(title.slice(1));
 
-  const handleClick = (e) => {
-    // setOpen(true)
-    // dispatch(handleDialog(true))
-    // console.log("task", task);
-    // task[e.target.name] = e.target.value;
-    // dispatch(updateTask(task));
-  };
-
-  const handleOnClick = () => {
+   const handleOnClick = () => {
     dispatch(deleteTask(task));
   };
 

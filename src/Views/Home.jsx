@@ -10,7 +10,6 @@ import { useSelector } from "react-redux";
 
 const Home = () => {
   const tasks = useSelector((state) => state.tasks); 
-  const allTasks = useSelector((state) => state.allTasks);  
 
   //preparo para la paginación
   const [page, setPage] = useState(1);
