@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 //material ui
 import { Dialog, DialogTitle, DialogContent } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +7,9 @@ import styles from "./CreateTask.module.css";
 
 const CreateTask = () => {
   const tasks = useSelector((state) => state.tasks);
+  const localStorage = useSelector((state) => state.localStorage)
+  console.log('localStorage=>', localStorage)
+
   const allTasks = useSelector((state) => state.allTasks);
   const dispatch = useDispatch();
   
@@ -63,6 +66,10 @@ const CreateTask = () => {
       action: "",
     });
   };
+
+  // useEffect(() => {
+  //   dispatch(setTasks())
+  // }, [dispatch, tasks.length])
 
   return (
     <div className={styles.container}>
@@ -147,14 +154,14 @@ const CreateTask = () => {
                   name="status"
                   onClick={(e) => handleChange(e)}
                 />
-                <label htmlFor="finalizada">Finalizada</label>
+                {/* <label htmlFor="finalizada">Finalizada</label>
                 <input
                   type="radio"
                   id="finalizada"
                   value="Finalizada"
                   name="status"
                   onClick={(e) => handleChange(e)}
-                />
+                /> */}
               </div>
               {error.status && <p className={styles.error}>{error.status}</p> }         
 
