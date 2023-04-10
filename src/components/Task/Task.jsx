@@ -21,7 +21,6 @@ const Task = ({ task }) => {
   };
 
   const handleOnClick = () => {
-    console.log("task:", task);
     dispatch(deleteTask(task));
   };
 

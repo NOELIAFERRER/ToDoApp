@@ -10,7 +10,9 @@ const initialState = {
   tasks: localStorage.getItem("tasks")
     ? JSON.parse(`${localStorage.getItem("tasks")}`)
     : [],
-  allTasks: [],
+  allTasks: localStorage.getItem("tasks")
+  ? JSON.parse(`${localStorage.getItem("tasks")}`)
+  : [],
   localStorage: [],
 };
 
@@ -49,6 +51,7 @@ const rootReducer = (state = initialState, action) => {
         tasksCopy[taskToUpdateIndex] = action.payload;
       }
       localStorage.setItem("tasks", JSON.stringify(tasksCopy));
+
       return {
         ...state,
         tasks: JSON.parse(localStorage.getItem("tasks")),
