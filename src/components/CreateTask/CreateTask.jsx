@@ -1,18 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 //material ui
 import { Dialog, DialogTitle, DialogContent } from "@mui/material";
+//redux
 import { useDispatch, useSelector } from "react-redux";
 import { getTasks, setTasks } from "../../redux/actions";
+//styles
 import styles from "./CreateTask.module.css";
 
 const CreateTask = () => {
   const tasks = useSelector((state) => state.tasks);
-  const localStorage = useSelector((state) => state.localStorage)
-  console.log('localStorage=>', localStorage)
-
   const allTasks = useSelector((state) => state.allTasks);
   const dispatch = useDispatch();
-  
+
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState({
     title: "",
@@ -24,13 +23,16 @@ const CreateTask = () => {
   const [error, setError] = useState({});
 
   const validateInput = (input) => {
-    let errorInput = {}
-    if(input.title === '') errorInput.title= 'Se debe ingresar una tarea';
-   if(input.priority === '') errorInput.priority= 'Se debe seleccionar una prioridad';
-   if(input.status === '' ) errorInput.status = 'Si no se selecciona una opción, por defecto será "Nueva"' 
-   if(input.action === '' ) input.action = 'otras' 
-   return errorInput
-  }
+    let errorInput = {};
+    if (input.title === "") errorInput.title = "Se debe ingresar una tarea";
+    if (input.priority === "")
+      errorInput.priority = "Se debe seleccionar una prioridad";
+    if (input.status === "")
+      errorInput.status =
+        'Si no se selecciona una opción, por defecto será "Nueva"';
+    if (input.action === "") input.action = "otras";
+    return errorInput;
+  };
 
   const handleClick = (e) => {
     setOpen(true);
@@ -47,13 +49,13 @@ const CreateTask = () => {
     setInput({
       ...input,
       [e.target.name]: e.target.value,
-    })    
-    setError(validateInput(input))
+    });
+    setError(validateInput(input));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(tasks.length !== allTasks.length){    
+    if (tasks.length !== allTasks.length) {
       dispatch(setTasks());
     }
     dispatch(getTasks(input));
@@ -66,10 +68,6 @@ const CreateTask = () => {
       action: "",
     });
   };
-
-  // useEffect(() => {
-  //   dispatch(setTasks())
-  // }, [dispatch, tasks.length])
 
   return (
     <div className={styles.container}>
@@ -94,10 +92,10 @@ const CreateTask = () => {
                 onChange={(e) => handleChange(e)}
                 name="title"
                 value={input.title}
-              />   
-               {error.title && <p className={styles.error}>{error.title}</p> }         
+              />
+              {error.title && <p className={styles.error}>{error.title}</p>}
             </div>
-           
+
             <div className={styles.options}>
               <div className={styles.optionsTitle}>
                 <span>Prioridad</span>
@@ -119,7 +117,7 @@ const CreateTask = () => {
                   value="Media"
                   name="priority"
                   onClick={(e) => handleChange(e)}
-                  />
+                />
                 <label htmlFor="Baja">Baja</label>
                 <input
                   type="radio"
@@ -127,9 +125,11 @@ const CreateTask = () => {
                   value="Baja"
                   name="priority"
                   onClick={(e) => handleChange(e)}
-                  />
+                />
               </div>
-                  {error.priority && <p className={styles.error}>{error.priority}</p>}
+              {error.priority && (
+                <p className={styles.error}>{error.priority}</p>
+              )}
             </div>
             <div className={styles.options}>
               <div className={styles.optionsTitle}>
@@ -154,17 +154,8 @@ const CreateTask = () => {
                   name="status"
                   onClick={(e) => handleChange(e)}
                 />
-                {/* <label htmlFor="finalizada">Finalizada</label>
-                <input
-                  type="radio"
-                  id="finalizada"
-                  value="Finalizada"
-                  name="status"
-                  onClick={(e) => handleChange(e)}
-                /> */}
               </div>
-              {error.status && <p className={styles.error}>{error.status}</p> }         
-
+              {error.status && <p className={styles.error}>{error.status}</p>}
             </div>
 
             <div className={styles.action}>
@@ -200,7 +191,9 @@ const CreateTask = () => {
                 value={input.description}
               ></textarea>
             </div>
-            <button type="submit" disabled={error.title || error.priority}>Agregar</button>
+            <button type="submit" disabled={error.title || error.priority}>
+              Agregar
+            </button>
           </form>
         </DialogContent>
       </Dialog>

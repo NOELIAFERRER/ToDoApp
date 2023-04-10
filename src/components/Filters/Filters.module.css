@@ -14,19 +14,16 @@
   color: white;
 }
 
-.container div {  
+.container div {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
-/* .container label { */
 label {
-
   font-size: 80%;
 }
 
-/* .container select { */
 select {
   background: none;
   border-radius: 2rem;

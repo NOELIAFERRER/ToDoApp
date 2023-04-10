@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from "react";
-import Task from "../components/Task/Task";
-import { useDispatch, useSelector } from "react-redux";
-import styles from './Home.module.css'
-import Pagination from "../components/Pagination/Pagination";
-import { getTasks, setTasks } from "../redux/actions";
+//components
 import Filters from "../components/Filters/Filters";
+import Task from "../components/Task/Task";
+import Pagination from "../components/Pagination/Pagination";
+//styles
+import styles from './Home.module.css'
+//redux
+import { useSelector } from "react-redux";
 
 const Home = () => {
-  const tasks = useSelector((state) => state.tasks);
-  console.log('tasks', tasks)
-  const allTasks = useSelector((state) => state.allTasks)
-  const dispatch = useDispatch();
-  console.log("tasks", tasks);
-  console.log('allTasks', allTasks);
-  
+  const tasks = useSelector((state) => state.tasks);  
+ 
   //preparo para la paginación
   const [page, setPage] = useState(1);
   const [tasksPerPage, setTasksPerPage] = useState(2);
@@ -27,14 +24,9 @@ const Home = () => {
   const singleTasks = currentTasks.filter((el) => el.action === "single");
   const otherTasks = currentTasks.filter((el) => el.action !== "llamada" && el.action!=='single');
  
-
   const paging = (number) => {
     setPage(number);
   };  
-
-  // useEffect(() => {
-  //   dispatch(setTasks())
-  // }, [dispatch, tasks.length])
 
   return (
     <div className={styles.container}> 

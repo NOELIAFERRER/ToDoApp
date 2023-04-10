@@ -1,5 +1,5 @@
 import React from "react";
-//estilos
+//styles
 import styles from './Pagination.module.css'
 
 const Pagination = ({ tasks, tasksPerPage, paging, page }) => {

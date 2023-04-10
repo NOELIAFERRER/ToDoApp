@@ -1,18 +1,19 @@
 import React, { useState } from "react";
+//redux
+import { useDispatch } from "react-redux";
+import { updateTask } from "../../redux/actions";
+//material ui
+import { Dialog, DialogContent } from "@mui/material";
 //styles
 import styles from "./Options.module.css";
-import { Dialog, DialogContent, DialogTitle } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
-import { closeDialog, handleDialog, updateTask } from "../../redux/actions";
+
 
 const Options = ({ task, pri, sta }) => {
-  const { title, priority, status, description } = task;
-  // const open = useSelector((state) => state.open)
+  const { priority, status } = task;
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
 
   const handleClick = (e) => {
-    console.log("task", task);
     task[e.target.name] = e.target.value;
     dispatch(updateTask(task));
   };

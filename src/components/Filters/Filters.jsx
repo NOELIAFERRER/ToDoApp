@@ -1,6 +1,8 @@
 import React from "react";
+//redux
 import { useDispatch } from "react-redux";
 import { filterTasks } from "../../redux/actions";
+//styles
 import styles from './Filters.module.css'
 
 const Filters = ({setPage}) => {

@@ -9,6 +9,7 @@ button {
     box-shadow: 0.1rem 0.1rem 0.2rem #313131, -0.1em -0.1rem 0.2rem #313131;
     color: white;
     font-size: 70%;
+    cursor: pointer;
 }
  
   .options {
